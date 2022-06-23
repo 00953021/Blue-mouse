@@ -151,8 +151,10 @@ void loop() {
 
   compAngleX = 0.93 * (compAngleX + gyroXrate-78 * dt) + 0.07 * roll; // Calculate the angle using a Complimentary filter
   compAngleY = 0.93 * (compAngleY + gyroYrate+191 * dt) + 0.07 * pitch;
- 
-
+  
+  compAngleX = compAngleX/5;
+  compAngleY = compAngleY/5;
+  
   // Reset the gyro angle when it has drifted too much
   if (gyroXangle < -180 || gyroXangle > 180)
     gyroXangle = kalAngleX;
